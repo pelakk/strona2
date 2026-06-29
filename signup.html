@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply as Publisher | CommiShift</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Konfiguracja Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0B1220',
+                            blue: '#2563EB',
+                            purple: '#7C3AED',
+                            light: '#F8FAFC',
+                            gray: '#64748B',
+                            success: '#10B981'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Spójne style Glassmorphism */
+        body {
+            background-color: #0B1220;
+            color: #F8FAFC;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .bg-blob {
+            position: absolute;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.4;
+            border-radius: 50%;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #0F172A inset !important;
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        select option {
+            background-color: #0F172A;
+            color: white;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-white relative py-20 lg:py-0 lg:h-screen lg:overflow-hidden lg:flex lg:items-center">
+
+    <!-- Efekty tła -->
+    <div class="bg-blob bg-brand-purple w-[600px] h-[600px] top-[-10%] left-[-10%] opacity-20 fixed pointer-events-none"></div>
+    <div class="bg-blob bg-brand-blue w-[700px] h-[700px] bottom-[-20%] right-[-10%] opacity-10 fixed pointer-events-none"></div>
+
+    <!-- Pasek górny -->
+    <div class="absolute top-0 left-0 w-full p-6 z-50 flex justify-between items-center bg-[#0B1220]/80 backdrop-blur-md border-b border-white/5 lg:bg-transparent lg:backdrop-blur-none lg:border-none">
+        <a href="index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+            <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center shadow-lg shadow-brand-blue/20">
+                <i data-lucide="network" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight hidden sm:block">CommiShift</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <span class="text-sm text-brand-gray hidden sm:block">Already a publisher?</span>
+            <a href="login.html" class="text-sm font-semibold text-brand-blue hover:text-white transition-colors flex items-center gap-2 bg-brand-blue/10 px-4 py-2 rounded-lg hover:bg-brand-blue/20">
+                Sign In <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Główny kontener rejestracji -->
+    <main class="w-full flex-1 flex justify-center items-center px-4 sm:px-6 lg:px-8 relative z-10 lg:h-full">
+        
+        <div class="w-full max-w-4xl lg:h-[85vh] flex flex-col lg:flex-row glass-panel rounded-2xl overflow-hidden shadow-2xl">
+            
+            <!-- Lewa kolumna: Informacyjna -->
+            <div class="hidden lg:flex w-5/12 bg-gradient-to-b from-[#0F172A] to-[#0B1220] p-10 flex-col justify-between border-r border-white/5 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold text-white mb-6">Join the Elite Network</h2>
+                    <p class="text-brand-gray leading-relaxed mb-8">
+                        CommiShift provides top-tier affiliates with exclusive offers, real-time tracking, and dedicated support to scale their revenue exponentially.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="zap" class="text-brand-blue w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Fast Approvals</h4>
+                                <p class="text-sm text-brand-gray mt-1">Get your account reviewed and approved within 24 hours.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-purple/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="banknote" class="text-brand-purple w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">On-Time Payments</h4>
+                                <p class="text-sm text-brand-gray mt-1">Enjoy weekly and monthly payouts with flexible payment methods.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-success/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="users" class="text-brand-success w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Dedicated Managers</h4>
+                                <p class="text-sm text-brand-gray mt-1">Work 1-on-1 with industry experts to optimize your campaigns.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative z-10 bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-md">
+                    <div class="flex text-yellow-500 mb-2">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-sm text-gray-300 italic mb-3">"The best network for scaling paid traffic. Their tracking is flawless."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs">MR</div>
+                        <span class="text-xs font-semibold text-white">Michael R.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prawa kolumna: Formularz Rejestracji -->
+            <div class="w-full lg:w-7/12 p-6 sm:p-8 lg:p-10 flex flex-col h-full lg:overflow-y-auto" style="scrollbar-width: thin; scrollbar-color: #1E293B transparent;">
+                
+                <div class="text-center lg:text-left mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Create your account</h2>
+                    <p class="text-brand-gray text-sm">Fill in the details below to apply as a publisher.</p>
+                </div>
+
+                <!-- Przycisk Google -->
+                <button class="w-full mb-6 py-3 px-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex justify-center items-center gap-3 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    Sign up with Google
+                </button>
+
+                <!-- Separator -->
+                <div class="relative mb-8">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-white/10"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-3 text-brand-gray" style="background-color: #0E1523; border-radius: 8px;">Or register with email</span>
+                    </div>
+                </div>
+
+                <!-- Formularz właściwy -->
+                <form id="signupForm" class="space-y-8" onsubmit="event.preventDefault(); handleSignup();">
+                    
+                    <!-- SEKCJA 1: Personal Details -->
+                    <div>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Personal Details</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- First Name -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">First Name</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="user" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input type="text" required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="John">
+                                </div>
+                            </div>
+                            <!-- Last Name -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Last Name</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="user" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input type="text" required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="Doe">
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="space-y-1.5 sm:col-span-2">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Email Address</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="mail" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input type="email" required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="john@company.com">
+                                </div>
+                            </div>
+                            <!-- Password -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Password</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="lock" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input id="password" type="password" required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-10 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="••••••••">
+                                    <button type="button" onclick="togglePassword('password', 'eyeIcon1')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-brand-gray hover:text-white transition-colors">
+                                        <i data-lucide="eye" id="eyeIcon1" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Confirm Password -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Confirm Password</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="lock-keyhole" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input id="confirmPassword" type="password" required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-10 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="••••••••">
+                                    <button type="button" onclick="togglePassword('confirmPassword', 'eyeIcon2')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-brand-gray hover:text-white transition-colors">
+                                        <i data-lucide="eye" id="eyeIcon2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEKCJA 2: Business Profile -->
+                    <div>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Business Profile</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Company Name -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Company Name <span class="text-white/30 text-[10px]">(Optional)</span></label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="building-2" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input type="text" class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="Company Ltd.">
+                                </div>
+                            </div>
+                            <!-- Website URL -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Website URL / Profile</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="link" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <input type="url" required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-brand-gray/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="https://example.com">
+                                </div>
+                            </div>
+                            <!-- Country -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Country</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="globe" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <select required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Select country</option>
+                                        <option value="us">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="ca">Canada</option>
+                                        <option value="au">Australia</option>
+                                        <option value="eu">European Union</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Traffic Source -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Main Traffic Source</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <select required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Select source</option>
+                                        <option value="social">Social Media (FB, IG, TikTok)</option>
+                                        <option value="search">Search (Google, Bing Ads)</option>
+                                        <option value="seo">SEO / Organic</option>
+                                        <option value="email">Email Marketing</option>
+                                        <option value="native">Native Ads</option>
+                                        <option value="influencer">Influencer / Creator</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Monthly Traffic -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Monthly Traffic Volume</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="bar-chart-2" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <select required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Select volume</option>
+                                        <option value="0-10k">0 - 10,000</option>
+                                        <option value="10k-50k">10,000 - 50,000</option>
+                                        <option value="50k-100k">50,000 - 100,000</option>
+                                        <option value="100k-500k">100,000 - 500,000</option>
+                                        <option value="500k+">500,000+</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Preferred Vertical -->
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-medium text-brand-gray ml-1">Preferred Vertical</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                        <i data-lucide="target" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                    <select required class="w-full bg-[#0F172A] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Select vertical</option>
+                                        <option value="finance">Finance / Crypto</option>
+                                        <option value="igaming">iGaming</option>
+                                        <option value="ecommerce">E-commerce</option>
+                                        <option value="leadgen">Lead Generation</option>
+                                        <option value="nutra">Nutra / Health</option>
+                                        <option value="sweepstakes">Sweepstakes</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-brand-gray"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEKCJA 3: Checkboxy -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start">
+                            <input id="terms" type="checkbox" required class="mt-1 h-4 w-4 rounded border-white/10 bg-[#0F172A] text-brand-blue focus:ring-brand-blue focus:ring-offset-0 transition-colors accent-brand-blue cursor-pointer">
+                            <label for="terms" class="ml-2 block text-sm text-brand-gray cursor-pointer">
+                                I agree to the <a href="#" class="text-brand-blue hover:text-white transition-colors">Terms of Service</a>, <a href="privacy.html" class="text-brand-blue hover:text-white transition-colors">Privacy Policy</a> and <a href="#" class="text-brand-blue hover:text-white transition-colors">Cookie Policy</a>.
+                            </label>
+                        </div>
+                        <div class="flex items-start">
+                            <input id="newsletter" type="checkbox" class="mt-1 h-4 w-4 rounded border-white/10 bg-[#0F172A] text-brand-blue focus:ring-brand-blue focus:ring-offset-0 transition-colors accent-brand-blue cursor-pointer">
+                            <label for="newsletter" class="ml-2 block text-sm text-brand-gray cursor-pointer">
+                                I want to receive updates on exclusive offers, platform features, and affiliate tips.
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Przycisk Rejestracji -->
+                    <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-primary text-white font-semibold text-lg hover:shadow-lg hover:shadow-brand-blue/30 transition-all duration-300 flex justify-center items-center gap-2 transform active:scale-[0.98] mt-4">
+                        <span id="btnText">Create Account</span>
+                        <i data-lucide="arrow-right" id="btnIcon" class="w-5 h-5"></i>
+                    </button>
+                </form>
+
+                <p class="text-center mt-6 text-sm text-brand-gray pb-4 lg:pb-0">
+                    Protected by reCAPTCHA and subject to the Google 
+                    <a href="privacy.html" class="text-brand-blue hover:text-white transition-colors">Privacy Policy</a> and 
+                    <a href="#" class="text-brand-blue hover:text-white transition-colors">Terms of Service</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Inicjalizacja ikon Lucide
+        lucide.createIcons();
+
+        // Funkcja pokazywania/ukrywania hasła
+        function togglePassword(inputId, iconId) {
+            const passwordInput = document.getElementById(inputId);
+            const eyeIcon = document.getElementById(iconId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        }
+
+        // Symulacja rejestracji
+        function handleSignup() {
+            const pass = document.getElementById('password').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
+            
+            if(pass !== confirmPass) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            
+            // Stan ładowania
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            btnText.innerText = 'Creating account...';
+            btnIcon.setAttribute('data-lucide', 'loader-2');
+            btnIcon.classList.add('animate-spin');
+            lucide.createIcons();
+
+            setTimeout(() => {
+                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                btnText.innerText = 'Create Account';
+                btnIcon.setAttribute('data-lucide', 'arrow-right');
+                btnIcon.classList.remove('animate-spin');
+                lucide.createIcons();
+                
+                alert("Demo: Wniosek przyjęty pomyślnie. Zazwyczaj następuje teraz weryfikacja email lub przekierowanie do panelu.");
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

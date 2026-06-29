@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommiShift | Scale Your Revenue With Performance Marketing</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Konfiguracja Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0B1220',
+                            blue: '#2563EB',
+                            purple: '#7C3AED',
+                            light: '#F8FAFC',
+                            gray: '#64748B',
+                            success: '#10B981'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)',
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Niestandardowe style Glassmorphism i detale */
+        body {
+            background-color: #0B1220;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(37, 99, 235, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-blob {
+            position: absolute;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.4;
+            border-radius: 50%;
+        }
+
+        /* Ukrycie paska przewijania */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1220;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-white relative">
+
+    <!-- Efekty tła -->
+    <div class="bg-blob bg-brand-purple w-[500px] h-[500px] top-[-200px] left-[-200px]"></div>
+    <div class="bg-blob bg-brand-blue w-[600px] h-[600px] top-[20%] right-[-200px] opacity-20"></div>
+
+    <!-- Pasek nawigacji -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                        <i data-lucide="network" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight">CommiShift</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Features</a>
+                    <a href="#verticals" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Verticals</a>
+                    <a href="#dashboard" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Platform</a>
+                    <a href="#contact" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="login.html" class="text-sm font-medium text-white hover:text-brand-blue transition-colors">Login</a>
+                    <a href="signup.html" class="px-5 py-2.5 rounded-xl bg-gradient-primary text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand-blue/30 transition-all duration-300 transform hover:-translate-y-0.5">
+                        Become a Publisher
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-4xl mx-auto">
+                
+                <!-- Plakietki -->
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center gap-2 text-xs font-medium">
+                        <span class="w-2 h-2 rounded-full bg-brand-success animate-pulse"></span> Real-Time Tracking
+                    </div>
+                    <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center gap-2 text-xs font-medium">
+                        <i data-lucide="zap" class="w-3 h-3 text-brand-blue"></i> Weekly Payments
+                    </div>
+                    <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center gap-2 text-xs font-medium">
+                        <i data-lucide="globe" class="w-3 h-3 text-brand-purple"></i> Global Offers
+                    </div>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                    Scale Your Revenue With <br/>
+                    <span class="text-gradient-primary">Performance Marketing</span>
+                </h1>
+                
+                <p class="mt-4 text-xl md:text-2xl text-brand-gray mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                    CommiShift connects affiliate publishers with high-converting offers, transparent tracking, and reliable payouts.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="signup.html" class="px-8 py-4 rounded-xl bg-gradient-primary text-white text-lg font-semibold hover:shadow-2xl hover:shadow-brand-blue/40 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        Become a Publisher <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="login.html" class="px-8 py-4 rounded-xl glass-panel text-white text-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
+                        Login
+                    </a>
+                </div>
+            </div>
+
+            <!-- Animowany Mockup Hero -->
+            <div class="mt-20 relative mx-auto max-w-5xl animate-float">
+                <div class="glass-panel rounded-2xl p-2 md:p-4 relative z-10 border border-white/10">
+                    <div class="bg-[#0F172A] rounded-xl overflow-hidden shadow-2xl relative border border-white/5">
+                        <!-- Pasek okna -->
+                        <div class="h-8 bg-white/5 border-b border-white/5 flex items-center px-4 gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-brand-success/80"></div>
+                        </div>
+                        <!-- Zawartość Dashboardu Mockup -->
+                        <div class="p-6 grid grid-cols-3 gap-6">
+                            <div class="col-span-3 md:col-span-2 space-y-6">
+                                <div class="h-48 rounded-xl border border-white/5 bg-gradient-to-t from-brand-blue/10 to-transparent flex items-end p-4">
+                                    <!-- Pseudo wykres -->
+                                    <div class="w-full h-full flex items-end justify-between gap-2">
+                                        <div class="w-full bg-brand-blue/20 rounded-t hover:bg-brand-blue/40 transition-colors h-[30%]"></div>
+                                        <div class="w-full bg-brand-blue/30 rounded-t hover:bg-brand-blue/40 transition-colors h-[50%]"></div>
+                                        <div class="w-full bg-brand-blue/40 rounded-t hover:bg-brand-blue/50 transition-colors h-[40%]"></div>
+                                        <div class="w-full bg-brand-blue/50 rounded-t hover:bg-brand-blue/60 transition-colors h-[70%]"></div>
+                                        <div class="w-full bg-brand-purple/60 rounded-t hover:bg-brand-purple/70 transition-colors h-[60%]"></div>
+                                        <div class="w-full bg-brand-purple/80 rounded-t hover:bg-brand-purple/90 transition-colors h-[90%]"></div>
+                                        <div class="w-full bg-gradient-primary rounded-t h-[100%] shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-3 md:col-span-1 space-y-4">
+                                <div class="p-4 rounded-xl border border-white/5 bg-white/5">
+                                    <p class="text-xs text-brand-gray mb-1">Today's Revenue</p>
+                                    <p class="text-2xl font-bold text-white">$1,482.50</p>
+                                    <p class="text-xs text-brand-success mt-1 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> +12.5%</p>
+                                </div>
+                                <div class="p-4 rounded-xl border border-white/5 bg-white/5">
+                                    <p class="text-xs text-brand-gray mb-1">Active Campaigns</p>
+                                    <p class="text-2xl font-bold text-white">143</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating elements -->
+                <div class="absolute -right-12 top-20 glass-panel p-4 rounded-xl animate-float-delayed hidden lg:block border border-white/10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-success/20 flex items-center justify-center">
+                            <i data-lucide="check" class="text-brand-success"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold">Conversion</p>
+                            <p class="text-xs text-brand-gray">Just now</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. TRUST & STATISTICS SECTION -->
+    <section class="py-20 border-y border-white/5 bg-white/[0.01] relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center divide-x divide-white/5">
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-white mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="420">0</span>+
+                    </div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Active Publishers</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-white mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="85">0</span>+
+                    </div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Advertisers</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-white mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="1200">0</span>+
+                    </div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Active Campaigns</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-white mb-2 flex justify-center items-center">
+                        $<span class="counter" data-target="2.8">0</span>M
+                    </div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Annual Revenue</div>
+                </div>
+                <div class="p-4 col-span-2 md:col-span-1">
+                    <div class="text-4xl font-bold text-white mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="99.7">0</span>%
+                    </div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Tracking Accuracy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WHY COMMISHIFT SECTION -->
+    <section id="features" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-sm font-bold text-brand-blue tracking-widest uppercase mb-3">Why CommiShift</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Designed for Performance</h3>
+                <p class="text-lg text-brand-gray">Everything you need to track, optimize, and scale your affiliate marketing campaigns in one unified platform.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-2" class="w-7 h-7 text-brand-blue"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Real-Time Reporting</h4>
+                    <p class="text-brand-gray leading-relaxed">Track clicks, conversions, EPC, ROI and revenue instantly. Make data-driven decisions on the fly.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-purple/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="crosshair" class="w-7 h-7 text-brand-purple"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Smart Tracking Tech</h4>
+                    <p class="text-brand-gray leading-relaxed">Cookieless tracking, server-to-server postbacks, and advanced attribution models ensure you never miss a sale.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-success/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="banknote" class="w-7 h-7 text-brand-success"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Fast Payouts</h4>
+                    <p class="text-brand-gray leading-relaxed">Weekly and monthly payouts with multiple payment methods including Wire, PayPal, and Crypto.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-14 h-14 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-7 h-7 text-yellow-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Dedicated Managers</h4>
+                    <p class="text-brand-gray leading-relaxed">Personal support, campaign optimization advice, and custom rate negotiations from industry experts.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-14 h-14 rounded-xl bg-pink-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="award" class="w-7 h-7 text-pink-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Premium Offers</h4>
+                    <p class="text-brand-gray leading-relaxed">Exclusive CPA, CPL, CPS and RevShare campaigns direct from top-tier advertisers globally.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-7 h-7 text-red-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Fraud Prevention</h4>
+                    <p class="text-brand-gray leading-relaxed">AI-powered fraud detection and traffic quality monitoring to protect both publishers and advertisers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. HOW IT WORKS SECTION -->
+    <section class="py-24 relative z-10 bg-white/[0.02] border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Start Earning in 4 Steps</h3>
+                <p class="text-brand-gray max-w-2xl mx-auto">A streamlined process to get you up and running without unnecessary delays.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Connecting line for desktop -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-brand-blue/0 via-brand-blue/50 to-brand-purple/0 -translate-y-1/2 z-0"></div>
+
+                <div class="grid md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="text-center relative">
+                        <div class="w-20 h-20 mx-auto bg-[#0F172A] border-2 border-brand-blue rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(37,99,235,0.3)]">
+                            <i data-lucide="user-plus" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">1. Register</h4>
+                        <p class="text-sm text-brand-gray">Create your publisher account in seconds.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="text-center relative">
+                        <div class="w-20 h-20 mx-auto bg-[#0F172A] border-2 border-white/20 rounded-full flex items-center justify-center mb-6 hover:border-brand-purple transition-colors">
+                            <i data-lucide="check-circle" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">2. Get Approved</h4>
+                        <p class="text-sm text-brand-gray">Quick review process by our dedicated team.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="text-center relative">
+                        <div class="w-20 h-20 mx-auto bg-[#0F172A] border-2 border-white/20 rounded-full flex items-center justify-center mb-6 hover:border-brand-blue transition-colors">
+                            <i data-lucide="mouse-pointer-click" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">3. Choose Offers</h4>
+                        <p class="text-sm text-brand-gray">Browse and select high-converting campaigns.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="text-center relative">
+                        <div class="w-20 h-20 mx-auto bg-[#0F172A] border-2 border-white/20 rounded-full flex items-center justify-center mb-6 hover:border-brand-success transition-colors">
+                            <i data-lucide="coins" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">4. Generate Revenue</h4>
+                        <p class="text-sm text-brand-gray">Drive traffic, track performance, and get paid.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FEATURED VERTICALS SECTION -->
+    <section id="verticals" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Top Performing Verticals</h3>
+                    <p class="text-brand-gray max-w-xl">We specialize in industries that deliver the highest EPC and lifetime value for our publishers.</p>
+                </div>
+                <a href="#" class="text-brand-blue font-medium hover:text-white transition-colors flex items-center gap-2">
+                    View All Offers <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="landmark" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-blue mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">Finance</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="gamepad-2" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-purple mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">iGaming</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="shopping-cart" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-blue mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">E-commerce</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="filter" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-purple mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">Lead Gen</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="smartphone" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-blue mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">Mobile Apps</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="cloud" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-purple mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">Software/SaaS</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="heart-pulse" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-blue mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">Nutra</h4>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group text-center">
+                    <i data-lucide="gift" class="w-8 h-8 mx-auto text-brand-gray group-hover:text-brand-purple mb-4 transition-colors"></i>
+                    <h4 class="font-semibold text-white">Sweepstakes</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. DASHBOARD PREVIEW SECTION -->
+    <section id="dashboard" class="py-24 relative z-10 overflow-hidden">
+        <!-- Tło gradientowe dla sekcji -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0B1220] via-brand-blue/5 to-[#0B1220] z-0"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-brand-blue tracking-widest uppercase mb-3">Powerful Analytics</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Your Control Center</h3>
+                <p class="text-brand-gray max-w-2xl mx-auto">Gain deep insights into your traffic with our modern, intuitive dashboard.</p>
+            </div>
+
+            <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+                <!-- Topbar Dashboardu -->
+                <div class="border-b border-white/10 p-4 bg-white/[0.02] flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <div class="font-bold text-white tracking-wide">Overview</div>
+                        <div class="text-xs text-brand-gray bg-white/5 px-2 py-1 rounded">Last 30 Days</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center"><i data-lucide="bell" class="w-4 h-4"></i></div>
+                        <div class="w-8 h-8 rounded-full bg-gradient-primary"></div>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8">
+                    <!-- Statystyki -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+                        <div class="bg-[#0F172A] p-5 rounded-xl border border-white/5">
+                            <p class="text-sm text-brand-gray mb-2">Monthly Revenue</p>
+                            <p class="text-3xl font-bold text-white">$42,670</p>
+                            <p class="text-xs text-brand-success mt-2 flex items-center gap-1"><i data-lucide="arrow-up-right" class="w-3 h-3"></i> 18.2% vs last month</p>
+                        </div>
+                        <div class="bg-[#0F172A] p-5 rounded-xl border border-white/5">
+                            <p class="text-sm text-brand-gray mb-2">Conversion Rate</p>
+                            <p class="text-3xl font-bold text-white">4.2%</p>
+                            <p class="text-xs text-brand-success mt-2 flex items-center gap-1"><i data-lucide="arrow-up-right" class="w-3 h-3"></i> 0.8% vs last month</p>
+                        </div>
+                        <div class="bg-[#0F172A] p-5 rounded-xl border border-white/5">
+                            <p class="text-sm text-brand-gray mb-2">Average EPC</p>
+                            <p class="text-3xl font-bold text-white">$0.84</p>
+                            <p class="text-xs text-brand-gray mt-2 flex items-center gap-1"><i data-lucide="minus" class="w-3 h-3"></i> Stable</p>
+                        </div>
+                        <div class="bg-[#0F172A] p-5 rounded-xl border border-white/5">
+                            <p class="text-sm text-brand-gray mb-2">Clicks</p>
+                            <p class="text-3xl font-bold text-white">128,450</p>
+                            <p class="text-xs text-brand-success mt-2 flex items-center gap-1"><i data-lucide="arrow-up-right" class="w-3 h-3"></i> 5.4% vs last month</p>
+                        </div>
+                    </div>
+
+                    <!-- Wykres i tabela -->
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-2 bg-[#0F172A] p-5 rounded-xl border border-white/5 h-80">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                        <div class="bg-[#0F172A] p-5 rounded-xl border border-white/5 overflow-hidden flex flex-col">
+                            <h4 class="text-sm font-semibold text-white mb-4">Top Campaigns</h4>
+                            <div class="space-y-4 flex-1">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-blue-500/20 flex items-center justify-center"><i data-lucide="smartphone" class="w-4 h-4 text-blue-500"></i></div>
+                                        <div>
+                                            <p class="text-sm text-white font-medium">Crypto App Install</p>
+                                            <p class="text-xs text-brand-gray">CPA • USA</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm font-bold text-white">$12,450</p>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-purple-500/20 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-4 h-4 text-purple-500"></i></div>
+                                        <div>
+                                            <p class="text-sm text-white font-medium">Casino Royale</p>
+                                            <p class="text-xs text-brand-gray">RevShare • Tier 1</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm font-bold text-white">$8,230</p>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-green-500/20 flex items-center justify-center"><i data-lucide="heart" class="w-4 h-4 text-green-500"></i></div>
+                                        <div>
+                                            <p class="text-sm text-white font-medium">Keto Diet Pills</p>
+                                            <p class="text-xs text-brand-gray">CPS • UK, CA</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm font-bold text-white">$5,100</p>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center"><i data-lucide="landmark" class="w-4 h-4 text-yellow-500"></i></div>
+                                        <div>
+                                            <p class="text-sm text-white font-medium">Credit Card Lead</p>
+                                            <p class="text-xs text-brand-gray">CPL • USA</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm font-bold text-white">$4,890</p>
+                                </div>
+                            </div>
+                            <button class="w-full mt-4 py-2 text-xs font-medium text-brand-blue hover:text-white transition-colors bg-white/5 rounded">View All Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TESTIMONIALS SECTION -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Trusted by Top Affiliates</h3>
+                <p class="text-brand-gray max-w-2xl mx-auto">Don't just take our word for it. Here's what our top partners have to say.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-8 rounded-2xl relative">
+                    <div class="flex text-yellow-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"CommiShift helped us scale our paid traffic campaigns with reliable tracking and fast payouts. Best network we've worked with this year."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-lg">MR</div>
+                        <div>
+                            <p class="font-bold text-white text-sm">Michael R.</p>
+                            <p class="text-xs text-brand-gray">Media Buyer</p>
+                        </div>
+                    </div>
+                    <i data-lucide="quote" class="absolute top-8 right-8 w-12 h-12 text-white/5"></i>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-8 rounded-2xl relative transform md:-translate-y-4 border-brand-blue/30">
+                    <div class="flex text-yellow-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"The support team and exclusive offers consistently outperform other networks. My dedicated manager is always available when I need him."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-lg">ST</div>
+                        <div>
+                            <p class="font-bold text-white text-sm">Sarah T.</p>
+                            <p class="text-xs text-brand-gray">Affiliate Publisher</p>
+                        </div>
+                    </div>
+                    <i data-lucide="quote" class="absolute top-8 right-8 w-12 h-12 text-white/5"></i>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-8 rounded-2xl relative">
+                    <div class="flex text-yellow-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"We doubled our monthly affiliate revenue after joining CommiShift. Their real-time reporting makes optimization incredibly easy."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold text-lg">DK</div>
+                        <div>
+                            <p class="font-bold text-white text-sm">David K.</p>
+                            <p class="text-xs text-brand-gray">Content Publisher</p>
+                        </div>
+                    </div>
+                    <i data-lucide="quote" class="absolute top-8 right-8 w-12 h-12 text-white/5"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CONTACT SECTION -->
+    <section id="contact" class="py-24 relative z-10 bg-white/[0.01] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Informacje kontaktowe -->
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-6">Get in Touch</h2>
+                    <p class="text-brand-gray text-lg mb-10">Have questions? Our team is here to help you scale your affiliate revenue.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="text-brand-blue w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Support Email</h4>
+                                <p class="text-brand-gray text-sm">support@commishift.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-purple/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="briefcase" class="text-brand-purple w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Business Inquiries</h4>
+                                <p class="text-brand-gray text-sm">partners@commishift.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-success/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="messages-square" class="text-brand-success w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Affiliate Support</h4>
+                                <p class="text-brand-gray text-sm">Available 24/7 for active publishers via Dashboard</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Mapy -->
+                    <div class="mt-10 h-48 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden relative group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); filter: grayscale(100%) brightness(50%) contrast(120%);"></div>
+                        <div class="relative z-10 flex flex-col items-center">
+                            <i data-lucide="map-pin" class="text-brand-blue w-8 h-8 mb-2"></i>
+                            <span class="text-sm font-semibold text-white tracking-widest uppercase">Global Operations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formularz Kontaktowy -->
+                <div class="glass-panel p-8 md:p-10 rounded-2xl relative">
+                    <form class="space-y-5 relative z-10" id="contactForm">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-1 relative group">
+                                <label class="text-xs text-brand-gray ml-1">Full Name</label>
+                                <input type="text" class="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="John Doe">
+                            </div>
+                            <div class="space-y-1 relative">
+                                <label class="text-xs text-brand-gray ml-1">Email</label>
+                                <input type="email" class="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="john@company.com">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs text-brand-gray ml-1">Company</label>
+                            <input type="text" class="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all" placeholder="Your Company Ltd">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs text-brand-gray ml-1">Subject</label>
+                            <select class="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none">
+                                <option value="">Select a subject...</option>
+                                <option value="publisher">Publisher Inquiry</option>
+                                <option value="advertiser">Advertiser Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs text-brand-gray ml-1">Message</label>
+                            <textarea rows="4" class="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all resize-none" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="button" onclick="submitContact(this)" class="w-full py-4 rounded-xl bg-gradient-primary text-white font-semibold hover:shadow-lg hover:shadow-brand-blue/30 transition-all duration-300 flex justify-center items-center gap-2">
+                            <span>Send Message</span> <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    
+                    <!-- Animowany stan sukcesu (ukryty domyślnie) -->
+                    <div id="contactSuccess" class="absolute inset-0 glass-panel rounded-2xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 z-20">
+                        <div class="w-16 h-16 rounded-full bg-brand-success/20 flex items-center justify-center mb-4">
+                            <i data-lucide="check" class="w-8 h-8 text-brand-success"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Message Sent!</h3>
+                        <p class="text-brand-gray text-sm text-center px-6">We've received your inquiry and will get back to you shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FAQ SECTION -->
+    <section class="py-24 relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h3>
+            <p class="text-brand-gray">Quick answers to common questions about our network.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ Item -->
+            <div class="glass-panel rounded-xl border border-white/10 overflow-hidden">
+                <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                    <span class="font-semibold text-white">How do I become an affiliate publisher?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gray transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-brand-gray text-sm leading-relaxed">
+                    Simply click on the "Become a Publisher" button and fill out our registration form. Our compliance team will review your application and typically approve it within 24-48 hours.
+                </div>
+            </div>
+            
+            <!-- FAQ Item -->
+            <div class="glass-panel rounded-xl border border-white/10 overflow-hidden">
+                <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                    <span class="font-semibold text-white">How often are payouts made?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gray transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-brand-gray text-sm leading-relaxed">
+                    We offer flexible payout schedules including Net-30, Net-15, and Weekly payments for trusted partners meeting volume requirements.
+                </div>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="glass-panel rounded-xl border border-white/10 overflow-hidden">
+                <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                    <span class="font-semibold text-white">Which traffic sources are allowed?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gray transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-brand-gray text-sm leading-relaxed">
+                    We accept a wide variety of traffic sources including Search, Social, Display, Native, Email, and SEO. However, all traffic must comply with our strict anti-fraud and quality guidelines. Incentivized traffic is only allowed on specific, designated offers.
+                </div>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="glass-panel rounded-xl border border-white/10 overflow-hidden">
+                <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                    <span class="font-semibold text-white">What payment methods are supported?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gray transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-brand-gray text-sm leading-relaxed">
+                    We currently support Wire Transfer, PayPal, Payoneer, Capitalist, and various Cryptocurrencies (USDT, BTC) to ensure you get paid securely no matter where you are located.
+                </div>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="glass-panel rounded-xl border border-white/10 overflow-hidden">
+                <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                    <span class="font-semibold text-white">Do you provide dedicated support?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gray transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-brand-gray text-sm leading-relaxed">
+                    Yes! Every approved publisher is assigned a dedicated Affiliate Manager who will help you find the best converting offers for your traffic, assist with technical setup, and negotiate custom payouts as you scale.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. FOOTER -->
+    <footer class="bg-[#070B14] border-t border-white/5 pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                            <i data-lucide="network" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight text-white">CommiShift</span>
+                    </div>
+                    <p class="text-brand-gray text-sm mb-6 max-w-sm">
+                        The premium performance marketing network connecting top publishers with global high-converting offers.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gray hover:bg-brand-blue hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gray hover:bg-brand-blue hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gray hover:bg-brand-blue hover:text-white transition-colors"><i data-lucide="send" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Careers</a></li>
+                        <li><a href="#contact" class="hover:text-brand-blue transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Network</h4>
+                    <ul class="space-y-2 text-sm text-brand-gray">
+                        <li><a href="signup.html" class="hover:text-brand-blue transition-colors">Publishers</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Advertisers</a></li>
+                        <li><a href="#verticals" class="hover:text-brand-blue transition-colors">Verticals</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">API Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="hover:text-brand-blue transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-brand-gray text-sm">© 2026 CommiShift. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-xs text-brand-gray">
+                    <span>Status:</span> <span class="flex items-center gap-1 text-brand-success"><span class="w-2 h-2 rounded-full bg-brand-success"></span> All systems operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty -->
+    <script>
+        // Inicjalizacja ikon
+        lucide.createIcons();
+
+        // 1. Zmiana stylu nawigacji przy scrollowaniu
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-[#0B1220]/80');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-[#0B1220]/80');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+
+        // 2. Logika dla FAQ (Akordeon)
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                // Zamknij wszystkie inne
+                faqBtns.forEach(otherBtn => {
+                    if(otherBtn !== btn) {
+                        otherBtn.nextElementSibling.classList.add('hidden');
+                        otherBtn.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Przełącz obecny
+                content.classList.toggle('hidden');
+                if(!content.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // 3. Animacja Liczników (Statystyki)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Im mniejsza liczba tym wolniej
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    // Krok inkrementacji
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        // Sprawdzamy czy to liczba całkowita czy z przecinkiem
+                        if(target % 1 !== 0) {
+                            counter.innerText = (count + inc).toFixed(1);
+                        } else {
+                            counter.innerText = Math.ceil(count + inc);
+                        }
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Observer do odpalenia animacji statystyk gdy będą widoczne
+        const statsSection = document.querySelector('.counter').parentElement.parentElement;
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                animateCounters();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        
+        if(statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // 4. Inicjalizacja Chart.js (Dashboard Mockup)
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        
+        // Gradient dla wykresu
+        let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(37, 99, 235, 0.5)'); // brand-blue
+        gradient.addColorStop(1, 'rgba(37, 99, 235, 0.0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1', '5', '10', '15', '20', '25', '30'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [1200, 1900, 1500, 2200, 1800, 2800, 2400],
+                    borderColor: '#2563EB',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#0B1220',
+                    pointBorderColor: '#7C3AED',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1E293B',
+                        titleColor: '#F8FAFC',
+                        bodyColor: '#F8FAFC',
+                        padding: 10,
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)',
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#64748B',
+                            callback: function(value) {
+                                return '$' + value;
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#64748B'
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+            }
+        });
+
+        // 5. Animacja wysłania formularza
+        function submitContact(btn) {
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('contactSuccess');
+            
+            // Zmiana przycisku
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Sending...';
+            lucide.createIcons();
+            
+            // Symulacja wysłania API
+            setTimeout(() => {
+                form.style.opacity = '0';
+                success.classList.remove('opacity-0', 'pointer-events-none');
+                
+                // Reset po 3 sekundach
+                setTimeout(() => {
+                    form.reset();
+                    form.style.opacity = '1';
+                    success.classList.add('opacity-0', 'pointer-events-none');
+                    btn.innerHTML = '<span>Send Message</span> <i data-lucide="send" class="w-4 h-4"></i>';
+                    lucide.createIcons();
+                }, 3000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

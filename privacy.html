@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | CommiShift</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Konfiguracja Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0B1220',
+                            blue: '#2563EB',
+                            purple: '#7C3AED',
+                            light: '#F8FAFC',
+                            gray: '#64748B',
+                            success: '#10B981'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B1220;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-blob {
+            position: absolute;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.4;
+            border-radius: 50%;
+        }
+
+        /* Subtelny styl dla aktywnych linków w spisie treści */
+        .toc-link.active {
+            color: #2563EB;
+            font-weight: 600;
+            border-left-color: #2563EB;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1220;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-white relative">
+
+    <!-- Efekty tła -->
+    <div class="bg-blob bg-brand-purple w-[600px] h-[600px] top-[-10%] left-[-10%] opacity-20 fixed pointer-events-none"></div>
+    <div class="bg-blob bg-brand-blue w-[700px] h-[700px] bottom-[20%] right-[-10%] opacity-10 fixed pointer-events-none"></div>
+
+    <!-- Pasek nawigacji -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5 bg-[#0B1220]/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                        <i data-lucide="network" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight">CommiShift</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#features" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Features</a>
+                    <a href="index.html#verticals" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Verticals</a>
+                    <a href="index.html#dashboard" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Platform</a>
+                    <a href="index.html#contact" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="login.html" class="text-sm font-medium text-white hover:text-brand-blue transition-colors">Login</a>
+                    <a href="signup.html" class="px-5 py-2.5 rounded-xl bg-gradient-primary text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand-blue/30 transition-all duration-300 transform hover:-translate-y-0.5">
+                        Become a Publisher
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nagłówek Strony -->
+    <header class="pt-40 pb-16 relative z-10 border-b border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-brand-gray mb-6">
+                    <i data-lucide="shield-check" class="w-3 h-3 text-brand-blue"></i> Legal Document
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Privacy <span class="text-gradient-primary">Policy</span></h1>
+                <p class="text-lg text-brand-gray mb-4">Effective Date: June 2026</p>
+                <p class="text-brand-gray leading-relaxed">
+                    At CommiShift, we take your privacy seriously. This document outlines how we collect, use, process, and protect your personal data when you use our platform and services.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Główna Zawartość -->
+    <main class="py-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
+                
+                <!-- Lewa kolumna: Spis treści (Sticky) -->
+                <aside class="lg:w-1/4 hidden lg:block">
+                    <div class="sticky top-32 glass-panel p-6 rounded-2xl">
+                        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-2">
+                            <i data-lucide="list" class="w-4 h-4 text-brand-blue"></i> Table of Contents
+                        </h4>
+                        <nav class="space-y-1" id="toc">
+                            <a href="#introduction" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">1. Introduction</a>
+                            <a href="#data-collection" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">2. Information We Collect</a>
+                            <a href="#data-usage" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">3. How We Use Information</a>
+                            <a href="#data-sharing" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">4. Sharing of Information</a>
+                            <a href="#cookies" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">5. Tracking & Cookies</a>
+                            <a href="#security" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">6. Data Security</a>
+                            <a href="#rights" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">7. Your Privacy Rights</a>
+                            <a href="#contact-us" class="toc-link block px-3 py-2 text-sm text-brand-gray hover:text-white border-l-2 border-transparent hover:border-white/20 transition-all rounded-r-lg hover:bg-white/5">8. Contact Us</a>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Prawa kolumna: Treść polityki -->
+                <article class="lg:w-3/4 pb-20">
+                    
+                    <section id="introduction" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">1</span>
+                            Introduction
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>Welcome to CommiShift ("Company", "we", "our", "us"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices with regard to your personal information, please contact us.</p>
+                            <p>When you visit our website (the "Website"), and more generally, use any of our services (the "Services", which include the Website), we appreciate that you are trusting us with your personal information. This privacy notice applies to all information collected through our Services, as well as any related services, sales, marketing, or events.</p>
+                        </div>
+                    </section>
+
+                    <section id="data-collection" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">2</span>
+                            Information We Collect
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <h3 class="text-lg font-semibold text-white mt-8 mb-3">Personal information you disclose to us</h3>
+                            <p>We collect personal information that you voluntarily provide to us when you register on the Website, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Website, or otherwise when you contact us.</p>
+                            <ul class="list-disc pl-6 space-y-2 mt-4 marker:text-brand-blue">
+                                <li><strong>Account Data:</strong> First name, last name, email address, password, and company name.</li>
+                                <li><strong>Payment Data:</strong> Data necessary to process your payouts if you make purchases or receive affiliate commissions (e.g., bank account details, PayPal address).</li>
+                                <li><strong>Business Data:</strong> Website URLs, traffic sources, monthly volumes, and preferred verticals to better match you with advertisers.</li>
+                            </ul>
+
+                            <h3 class="text-lg font-semibold text-white mt-8 mb-3">Information automatically collected</h3>
+                            <p>We automatically collect certain information when you visit, use, or navigate the Website. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, and information about how and when you use our Website.</p>
+                        </div>
+                    </section>
+
+                    <section id="data-usage" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">3</span>
+                            How We Use Information
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>We use personal information collected via our Website for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations.</p>
+                            <ul class="list-none space-y-4 mt-6">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-success shrink-0 mt-0.5"></i>
+                                    <span><strong>To facilitate account creation and logon process.</strong> If you choose to link your account with us to a third-party account (such as your Google account), we use the information you allowed us to collect to facilitate account creation.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-success shrink-0 mt-0.5"></i>
+                                    <span><strong>To manage user accounts.</strong> We may use your information for the purposes of managing our account and keeping it in working order.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-success shrink-0 mt-0.5"></i>
+                                    <span><strong>To fulfill and manage payouts.</strong> We may use your information to fulfill and manage your affiliate commissions, payments, and tracking algorithms.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-success shrink-0 mt-0.5"></i>
+                                    <span><strong>To protect our Services.</strong> We may use your information as part of our efforts to keep our Website safe and secure (for example, for fraud monitoring and prevention).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="data-sharing" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">4</span>
+                            Sharing of Information
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations. We may process or share your data that we hold based on the following legal basis:</p>
+                            <div class="glass-panel p-6 rounded-xl mt-6 border-l-4 border-l-brand-purple">
+                                <h3 class="text-white font-semibold mb-2">Vendors, Consultants, and Other Third-Party Service Providers</h3>
+                                <p class="text-sm">We may share your data with third-party vendors, service providers, contractors, or agents who perform services for us or on our behalf and require access to such information to do that work. Examples include: payment processing, data analysis, email delivery, hosting services, and customer service.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="cookies" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">5</span>
+                            Tracking & Cookies
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.</p>
+                            <p>As a performance marketing network, tracking is fundamental to our service. However, we employ advanced server-to-server and cookieless tracking methodologies to minimize reliance on persistent client-side storage while maintaining 99.7% attribution accuracy.</p>
+                        </div>
+                    </section>
+
+                    <section id="security" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">6</span>
+                            Data Security
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure.</p>
+                            <p>We use industry-standard encryption (SSL/TLS) for data in transit and AES-256 encryption for sensitive data at rest.</p>
+                        </div>
+                    </section>
+
+                    <section id="rights" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">7</span>
+                            Your Privacy Rights
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>Depending on where you are located (e.g., European Economic Area or United Kingdom), you have certain rights under applicable data protection laws. These may include the right to:</p>
+                            <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                    <i data-lucide="eye" class="w-5 h-5 text-white mb-2"></i>
+                                    <h4 class="text-white font-medium mb-1">Right to Access</h4>
+                                    <p class="text-sm">Request access to and obtain a copy of your personal information.</p>
+                                </div>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                    <i data-lucide="edit-3" class="w-5 h-5 text-white mb-2"></i>
+                                    <h4 class="text-white font-medium mb-1">Right to Rectification</h4>
+                                    <p class="text-sm">Request rectification of inaccurate personal information.</p>
+                                </div>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                    <i data-lucide="trash-2" class="w-5 h-5 text-white mb-2"></i>
+                                    <h4 class="text-white font-medium mb-1">Right to Erasure</h4>
+                                    <p class="text-sm">Request erasure of your personal information (Right to be forgotten).</p>
+                                </div>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                    <i data-lucide="shield-off" class="w-5 h-5 text-white mb-2"></i>
+                                    <h4 class="text-white font-medium mb-1">Right to Restrict</h4>
+                                    <p class="text-sm">Restrict the processing of your personal information.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="contact-us" class="mb-16 scroll-mt-32">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm">8</span>
+                            Contact Us
+                        </h2>
+                        <div class="prose prose-invert max-w-none text-brand-gray space-y-4">
+                            <p>If you have questions or comments about this notice, you may email our Data Protection Officer (DPO) at:</p>
+                            <div class="flex items-center gap-4 bg-[#0F172A] border border-white/10 p-6 rounded-xl mt-6">
+                                <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="text-brand-blue w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Privacy Team</h4>
+                                    <a href="mailto:privacy@commishift.com" class="text-brand-blue hover:text-white transition-colors">privacy@commishift.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- 12. FOOTER (Spójny ze stroną główną) -->
+    <footer class="bg-[#070B14] border-t border-white/5 pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                            <i data-lucide="network" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight text-white">CommiShift</span>
+                    </div>
+                    <p class="text-brand-gray text-sm mb-6 max-w-sm">
+                        The premium performance marketing network connecting top publishers with global high-converting offers.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gray hover:bg-brand-blue hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gray hover:bg-brand-blue hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand-gray hover:bg-brand-blue hover:text-white transition-colors"><i data-lucide="send" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Careers</a></li>
+                        <li><a href="index.html#contact" class="hover:text-brand-blue transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Network</h4>
+                    <ul class="space-y-2 text-sm text-brand-gray">
+                        <li><a href="signup.html" class="hover:text-brand-blue transition-colors">Publishers</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Advertisers</a></li>
+                        <li><a href="index.html#verticals" class="hover:text-brand-blue transition-colors">Verticals</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">API Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-brand-gray text-sm">© 2026 CommiShift. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-xs text-brand-gray">
+                    <span>Status:</span> <span class="flex items-center gap-1 text-brand-success"><span class="w-2 h-2 rounded-full bg-brand-success"></span> All systems operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrypty -->
+    <script>
+        // Inicjalizacja ikon Lucide
+        lucide.createIcons();
+
+        // Prosty skrypt do podświetlania aktywnego linku w spisie treści podczas scrollowania
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.toc-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.classList.remove('border-brand-blue');
+                    link.classList.add('border-transparent');
+                    
+                    if (link.getAttribute('href').includes(current) && current !== '') {
+                        link.classList.add('active');
+                        link.classList.remove('border-transparent');
+                        link.classList.add('border-brand-blue');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
