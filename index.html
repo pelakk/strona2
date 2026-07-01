@@ -275,7 +275,7 @@
                 </div>
                 <div class="p-4">
                     <div class="text-4xl font-bold text-white mb-2 flex justify-center items-center">
-                        $<span class="counter" data-target="2.8">0</span>M
+                        $<span class="counter" data-target="500">0</span>k+
                     </div>
                     <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Annual Revenue</div>
                 </div>
@@ -883,24 +883,31 @@
         // 2. Logika dla FAQ (Akordeon)
         const faqBtns = document.querySelectorAll('.faq-btn');
         faqBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                // Zapobiegamy domyślnej akcji przycisku
+                e.preventDefault();
+                
                 const content = btn.nextElementSibling;
                 const icon = btn.querySelector('i');
+                const isExpanded = !content.classList.contains('hidden');
                 
-                // Zamknij wszystkie inne
+                // Zamknij wszystkie inne (Opcjonalne, ale daje lepszy efekt)
                 faqBtns.forEach(otherBtn => {
-                    if(otherBtn !== btn) {
-                        otherBtn.nextElementSibling.classList.add('hidden');
-                        otherBtn.querySelector('i').style.transform = 'rotate(0deg)';
+                    const otherContent = otherBtn.nextElementSibling;
+                    const otherIcon = otherBtn.querySelector('i');
+                    if(otherBtn !== btn && !otherContent.classList.contains('hidden')) {
+                        otherContent.classList.add('hidden');
+                        otherIcon.style.transform = 'rotate(0deg)';
                     }
                 });
 
                 // Przełącz obecny
-                content.classList.toggle('hidden');
-                if(!content.classList.contains('hidden')) {
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
+                if (isExpanded) {
+                    content.classList.add('hidden');
                     icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
                 }
             });
         });
